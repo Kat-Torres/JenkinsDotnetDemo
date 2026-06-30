@@ -4,11 +4,13 @@ pipeline {
     stages {
 
         stage('Build') {
-            steps {
-                sh 'dotnet restore'
-                sh 'dotnet build -c Release'
-            }
-        }
+    steps {
+        sh '''
+        docker run --rm -v $PWD:/app -w /app mcr.microsoft.com/dotnet/sdk:9.0 \
+        dotnet build -c Release
+        '''
+    }
+}
 
         stage('Test') {
             steps {
