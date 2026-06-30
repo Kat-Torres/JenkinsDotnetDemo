@@ -3,13 +3,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build in Docker') {
+         stage('Build in Docker') {
             steps {
                 script {
                     docker.image('mcr.microsoft.com/dotnet/sdk:9.0').inside {
