@@ -3,16 +3,22 @@ pipeline {
 
     stages {
 
-         stage('Build in Docker') {
+        stage('Build') {
             steps {
-                script {
-                    docker.image('mcr.microsoft.com/dotnet/sdk:9.0').inside {
-                        sh 'dotnet restore'
-                        sh 'dotnet build -c Release'
-                        sh 'dotnet test'
-                        sh 'dotnet publish -c Release -o publish'
-                    }
-                }
+                sh 'dotnet restore'
+                sh 'dotnet build -c Release'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'dotnet test'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                sh 'dotnet publish -c Release -o publish'
             }
         }
 
