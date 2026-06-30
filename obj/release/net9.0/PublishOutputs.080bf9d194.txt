@@ -1,0 +1,9 @@
+C:\Users\kathe\JenkinsDotnetDemo\publish\JenkinsDotnetDemo.exe
+C:\Users\kathe\JenkinsDotnetDemo\publish\appsettings.Development.json
+C:\Users\kathe\JenkinsDotnetDemo\publish\appsettings.json
+C:\Users\kathe\JenkinsDotnetDemo\publish\JenkinsDotnetDemo.dll
+C:\Users\kathe\JenkinsDotnetDemo\publish\JenkinsDotnetDemo.deps.json
+C:\Users\kathe\JenkinsDotnetDemo\publish\JenkinsDotnetDemo.runtimeconfig.json
+C:\Users\kathe\JenkinsDotnetDemo\publish\JenkinsDotnetDemo.pdb
+C:\Users\kathe\JenkinsDotnetDemo\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\kathe\JenkinsDotnetDemo\publish\Microsoft.OpenApi.dll
