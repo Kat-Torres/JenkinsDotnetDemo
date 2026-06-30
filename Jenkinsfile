@@ -8,28 +8,17 @@ pipeline {
             }
         }
 
-        stage('Restore') {
-            steps {
-                bat 'dotnet restore'
-            }
-        }
-
         stage('Build') {
-            steps {
-                bat 'dotnet build --configuration Release'
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/dotnet/sdk:9.0'
             }
         }
 
-        stage('Test') {
-            steps {
-                bat 'dotnet test'
-            }
-        }
-
-        stage('Publish') {
-            steps {
-                bat 'dotnet publish -c Release -o publish'
-            }
-        }
-    }
+       steps {
+                sh 'dotnet restore'
+                sh 'dotnet build --configuration Release'
+             }
+         }
+      }
 }
