@@ -1,0 +1,18 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0
+
+WORKDIR /app
+
+# Copiamos el proyecto
+COPY . .
+
+# Restaurar dependencias
+RUN dotnet restore
+
+# Compilar en Release
+RUN dotnet build -c Release
+
+# Publicar la aplicación
+RUN dotnet publish -c Release -o /out
+
+# Punto de salida (solo para pruebas)
+CMD ["ls", "/out"]
