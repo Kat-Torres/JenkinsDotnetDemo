@@ -2,23 +2,25 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Build') {
-            agent {
-                docker {
-                    image 'mcr.microsoft.com/dotnet/sdk:9.0'
+        stage('Build in Docker') {
+            steps {
+                script {
+                    docker.image('mcr.microsoft.com/dotnet/sdk:9.0').inside {
+                        sh 'dotnet restore'
+                        sh 'dotnet build -c Release'
+                        sh 'dotnet test'
+                        sh 'dotnet publish -c Release -o publish'
+                    }
+                }
             }
         }
 
-       steps {
-                sh 'dotnet restore'
-                sh 'dotnet build --configuration Release'
-             }
-         }
-      }
+    }
 }
